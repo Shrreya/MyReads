@@ -9,6 +9,10 @@ class ListBooks extends React.Component {
 		books: PropTypes.array.isRequired
 	}
 
+	updateListBooks = (book, shelf) => {
+		this.props.onUpdateListBooks(book, shelf);
+	}
+
 	render() {
 
 		const { books } = this.props;
@@ -29,7 +33,8 @@ class ListBooks extends React.Component {
                     <ol className="books-grid">
 											{currentlyReadingBooks.map((book) => (
 												<li key={book.id}>
-	                        <Book book={book}/>
+	                        <Book book={book} onUpdateBookShelf={(book, shelf) =>
+														{this.updateListBooks(book, shelf)}}/>
 	                      </li>
 											))}
                     </ol>
@@ -41,7 +46,8 @@ class ListBooks extends React.Component {
                     <ol className="books-grid">
 											{wantToReadBooks.map((book) => (
 												<li key={book.id}>
-													<Book book={book}/>
+													<Book book={book} onUpdateBookShelf={(book, shelf) =>
+														{this.updateListBooks(book, shelf)}}/>
 												</li>
 											))}
                     </ol>
@@ -53,7 +59,8 @@ class ListBooks extends React.Component {
                     <ol className="books-grid">
 											{readBooks.map((book) => (
 												<li key={book.id}>
-													<Book book={book}/>
+													<Book book={book} onUpdateBookShelf={(book, shelf) =>
+														{this.updateListBooks(book, shelf)}}/>
 												</li>
 											))}
                     </ol>
