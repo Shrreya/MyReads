@@ -11,9 +11,9 @@ class Book extends React.Component {
 
     const { book } = this.props;
     const bookTitle = book.title;
-    const bookAuthors = book.authors.join(`, `);
+    const bookAuthors = book.hasOwnProperty('authors') ? book.authors.join(`, `) : 'Unknown';
     const bookCoverUrl = `url(${book.imageLinks.thumbnail})`;
-    const bookShelf = book.shelf;
+    const bookShelf = book.hasOwnProperty('shelf') ? book.shelf : 'none';
 
     return (
       <div className="book">

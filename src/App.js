@@ -31,14 +31,21 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    const { books } = this.state;
+
     return (
       <div className="app">
         <Route path='/search' render={() => (
-          <SearchBooks />
+          <SearchBooks
+            books={books}
+            onUpdateListBooks={(book, shelf) => {this.updateBooks(book, shelf)}}
+          />
         )} />
         <Route exact path='/' render={() => (
-          <ListBooks books={this.state.books} onUpdateListBooks={(book, shelf) =>
-            {this.updateBooks(book, shelf)}}/>
+          <ListBooks
+            books={books}
+            onUpdateListBooks={(book, shelf) => {this.updateBooks(book, shelf)}}
+          />
         )} />
       </div>
     )
@@ -46,5 +53,3 @@ class BooksApp extends React.Component {
 }
 
 export default BooksApp;
-
-// TODO : verify history on search Route
