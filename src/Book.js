@@ -19,7 +19,7 @@ class Book extends React.Component {
     const { book, shelvedBooks } = this.props;
     const bookTitle = book.title;
     const bookAuthors = book.authors ? book.authors.join(`, `) : 'Unknown';
-    const bookCoverUrl = `url(${book.imageLinks.thumbnail})`;
+    const bookCoverUrl = book.imageLinks ? `url(${book.imageLinks.thumbnail})` : ``;
     const bookShelf = shelvedBooks.find(shelvedBook => shelvedBook.id === book.id) ?
       shelvedBooks.find(shelvedBook => shelvedBook.id === book.id).shelf :
       'none';
