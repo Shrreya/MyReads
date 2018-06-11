@@ -33,11 +33,6 @@ class BooksApp extends React.Component {
         shelvedBooks: currentState.shelvedBooks.filter(shelvedBook => shelvedBook.id !== book.id).concat([book])
       }));
     }
-    this.setState((currentState) => ({
-      shelvedBooks: currentState.shelvedBooks.map((b) => {
-        return b.id === book.id ? book : b;
-      })
-    }))
     BooksAPI.update(book, shelf);
   }
 
