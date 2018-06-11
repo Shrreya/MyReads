@@ -9,19 +9,26 @@ class Book extends React.Component {
 
   render() {
 
-    const { book } = this.props;
+    const { book, shelvedBooks } = this.props;
     const bookTitle = book.title;
-    const bookAuthors = book.hasOwnProperty('authors') ? book.authors.join(`, `) : 'Unknown';
+    const bookAuthors = book.authors ? book.authors.join(`, `) : 'Unknown';
     const bookCoverUrl = `url(${book.imageLinks.thumbnail})`;
-    const bookShelf = book.hasOwnProperty('shelf') ? book.shelf : 'none';
+    const bookShelf = shelvedBooks.find(shelvedBook => shelvedBook.id === book.id) ?
+      shelvedBooks.find(shelvedBook => shelvedBook.id === book.id).shelf :
+      'none';
 
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193,
-            backgroundImage: bookCoverUrl }} />
-          <BookShelfChanger shelf={bookShelf} onChangeShelf={(shelf) =>
-            {this.updateBookShelf(book, shelf)}}/>
+          <div
+            className="book-cover"
+            style={{ width: 128, height: 193,
+            backgroundImage: bookCoverUrl }}
+          />
+          <BookShelfChanger
+            shelf={bookShelf}
+            onChangeShelf={(shelf) => {this.updateBookShelf(book, shelf)}}
+          />
         </div>
         <div className="book-title">{bookTitle}</div>
         <div className="book-authors">{bookAuthors}</div>
