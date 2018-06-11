@@ -12,20 +12,28 @@ class SearchBooks extends React.Component {
 
 	state = {
 		query: '',
-		searchedBooks: []
+		books: []
 	}
 
 	searchBooks(event) {
 		const query = event.target.value;
+
 		this.setState(() => ({
 				query: query.trim(),
-				searchedBooks: []
+				books: []
 		}))
+
 		query !== '' && BooksAPI.search(query)
 			.then((searchedBooks) => {
-				this.setState(() => ({
-		      searchedBooks: searchedBooks
-		    }))
+				const bookPromises = searchedBooks.map((searchedBook) => {
+					return BooksAPI.get(searchedBook.id);
+				})
+				Promise.all(bookPromises)
+					.then((bookResults) => {
+						this.setState(() => ({
+				      books: bookResults
+				    }))
+					})
 			})
   }
 
@@ -35,7 +43,7 @@ class SearchBooks extends React.Component {
 
 	render() {
 
-		const { query, searchedBooks } = this.state;
+		const { query, books } = this.state;
 
 		return (
 			<div className="search-books">
@@ -56,14 +64,16 @@ class SearchBooks extends React.Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-						{!searchedBooks.hasOwnProperty("error") && searchedBooks.map((book) => (
-							<li key={book.id}>
-								<Book
-									book={book}
-									onUpdateBookShelf={(book, shelf) => {this.updateListBooks(book, shelf)}}
-								/>
-							</li>
-						))}
+						{
+							books.map((book) => (
+								<li key={book.id}>
+									<Book
+										book={book}
+										onUpdateBookShelf={(book, shelf) => {this.updateListBooks(book, shelf)}}
+									/>
+								</li>
+							))
+						}
 					</ol>
         </div>
       </div>
