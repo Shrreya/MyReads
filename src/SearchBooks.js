@@ -1,8 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import Book from './Book';
 
 class SearchBooks extends React.Component {
+
+	static propTypes = {
+		shelvedBooks: PropTypes.array.isRequired,
+		searchedBooks: PropTypes.array.isRequired,
+    query: PropTypes.string.isRequired,
+    onUpdateQuery: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired,
+    onClear: PropTypes.func.isRequired,
+		onUpdateListBooks: PropTypes.func.isRequired
+  }
 
 	updateListBooks = (book, shelf) => {
 		this.props.onUpdateListBooks(book, shelf);
