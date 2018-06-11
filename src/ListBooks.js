@@ -80,7 +80,7 @@ class ListBooks extends React.Component {
 		                  </div>
 		                </div>
 		              </div>
-		            </div> : <span>Loading books...</span>
+		            </div> : <div className="loader-msg">Loading books...</div>
 							}
             <div className="open-search">
               <Link to='/search'>Add a book</Link>

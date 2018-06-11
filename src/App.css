@@ -10,6 +10,10 @@ body, .app {
 
 /* main page */
 
+.list-books {
+  text-align: center;
+}
+
 .list-books-title {
   padding: 10px 0;
   background: #2e7c31;
@@ -60,6 +64,10 @@ body, .app {
   background-size: 28px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   font-size: 0;
+}
+
+.loader-msg {
+  margin-top: 20px;
 }
 
 /* search page */
