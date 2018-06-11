@@ -24,6 +24,15 @@ class BooksApp extends React.Component {
 
   updateBooks = (book, shelf) => {
     book.shelf = shelf;
+    if (shelf === 'none') {
+      this.setState((currentState) => ({
+        shelvedBooks: currentState.shelvedBooks.filter(shelvedBook => shelvedBook.id !== book.id)
+      }));
+    } else {
+      this.setState((currentState) => ({
+        shelvedBooks: currentState.shelvedBooks.filter(shelvedBook => shelvedBook.id !== book.id).concat([book])
+      }));
+    }
     this.setState((currentState) => ({
       shelvedBooks: currentState.shelvedBooks.map((b) => {
         return b.id === book.id ? book : b;
