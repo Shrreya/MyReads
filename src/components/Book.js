@@ -18,8 +18,11 @@ class Book extends React.Component {
 
     const { book, shelvedBooks } = this.props;
     const bookTitle = book.title;
+    // Set author names or default to Unknown
     const bookAuthors = book.authors ? book.authors.join(`, `) : 'Unknown';
+    // Set book cover image or default to blank cover
     const bookCoverUrl = book.imageLinks ? `url(${book.imageLinks.thumbnail})` : ``;
+    // Set book shelf or default to None
     const bookShelf = shelvedBooks.find(shelvedBook => shelvedBook.id === book.id) ?
       shelvedBooks.find(shelvedBook => shelvedBook.id === book.id).shelf :
       'none';

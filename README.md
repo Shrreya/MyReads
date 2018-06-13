@@ -24,7 +24,7 @@ To get started:
 │   └── index.html # App static template.
 └── src
     ├── App.css # Styles for the app.
-    ├── App.js # This is the root of the app. Contains static HTML right now.
+    ├── App.js # This is the root of the app. Manages the state and routes.
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── components # Composable React Components.
     │   ├── Book.js # React Component displaying book details.
