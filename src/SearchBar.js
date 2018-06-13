@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 
 class SearchBar extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.timeout= null;
+  }
+
   static propTypes = {
     query: PropTypes.string.isRequired,
     onUpdateQuery: PropTypes.func.isRequired,
@@ -12,9 +17,16 @@ class SearchBar extends React.Component {
   }
 
   handleChange = event => {
-    const newQuery = event.target.value
+    const newQuery = event.target.value;
     this.props.onUpdateQuery(newQuery);
-    newQuery ? this.props.onSearch(newQuery) : this.props.onClear();
+  }
+
+  timedSearch = () => {
+    clearTimeout(this.timeout);
+    const { query, onSearch, onClear } = this.props;
+    this.timeout = setTimeout(() => {
+      query ? onSearch(query) : onClear();
+    }, 500);
   }
 
   render() {
@@ -31,6 +43,7 @@ class SearchBar extends React.Component {
             placeholder="Search by title or author"
             value={this.props.query}
             onChange={this.handleChange}
+            onKeyUp={this.timedSearch}
           />
         </div>
       </div>
