@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import Book from "./Book";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import Book from './Book';
 
 class ListBooks extends React.Component {
 	static propTypes = {
@@ -17,12 +17,12 @@ class ListBooks extends React.Component {
 	render() {
 		const { dataAvailable, shelvedBooks } = this.props;
 		const currentlyReadingBooks = shelvedBooks.filter(
-			book => book.shelf === "currentlyReading"
+			book => book.shelf === 'currentlyReading'
 		);
 		const wantToReadBooks = shelvedBooks.filter(
-			book => book.shelf === "wantToRead"
+			book => book.shelf === 'wantToRead'
 		);
-		const readBooks = shelvedBooks.filter(book => book.shelf === "read");
+		const readBooks = shelvedBooks.filter(book => book.shelf === 'read');
 
 		return (
 			<div className="list-books">

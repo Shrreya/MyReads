@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import SearchBar from "./SearchBar";
-import Book from "./Book";
+import React from 'react';
+import PropTypes from 'prop-types';
+import SearchBar from './SearchBar';
+import Book from './Book';
 
 class SearchBooks extends React.Component {
 	static propTypes = {
