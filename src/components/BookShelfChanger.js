@@ -8,12 +8,8 @@ class BookShelfChanger extends React.Component {
     onChangeShelf: PropTypes.func.isRequired
   }
 
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
+  // New shelf selected
+  handleChange = (event) => {
     this.props.onChangeShelf(event.target.value);
   }
 
