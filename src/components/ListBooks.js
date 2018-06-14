@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import Book from './Book';
 
 class ListBooks extends React.Component {
+	
 	static propTypes = {
 		dataAvailable: PropTypes.bool.isRequired,
 		shelvedBooks: PropTypes.array.isRequired,
 		onUpdateListBooks: PropTypes.func.isRequired
 	};
 
+	// Update ListBooks by shelf
 	updateListBooks = (book, shelf) => {
 		this.props.onUpdateListBooks(book, shelf);
 	};

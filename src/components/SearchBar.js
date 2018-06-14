@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class SearchBar extends React.Component {
+	
 	constructor(props) {
 		super(props);
 		this.timeout = null;
@@ -15,7 +16,7 @@ class SearchBar extends React.Component {
 		onClear: PropTypes.func.isRequired
 	};
 
-	// Update search query on search bar in real time
+	// Update search query displayed on search bar in real time
 	handleChange = event => {
 		const newQuery = event.target.value;
 		this.props.onUpdateQuery(newQuery);

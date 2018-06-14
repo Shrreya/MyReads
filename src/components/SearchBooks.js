@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import Book from './Book';
 
 class SearchBooks extends React.Component {
+	
 	static propTypes = {
 		shelvedBooks: PropTypes.array.isRequired,
 		searchedBooks: PropTypes.array.isRequired,
@@ -14,6 +15,7 @@ class SearchBooks extends React.Component {
 		onUpdateListBooks: PropTypes.func.isRequired
 	};
 
+	// Update ListBooks by shelf
 	updateListBooks = (book, shelf) => {
 		this.props.onUpdateListBooks(book, shelf);
 	};

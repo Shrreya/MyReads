@@ -14,6 +14,7 @@ class BooksApp extends React.Component {
     query: ''
   }
 
+  // Get all books on shelves
   async componentDidMount() {
     const shelvedBooks = await BooksAPI.getAll();
     this.setState({
@@ -22,13 +23,17 @@ class BooksApp extends React.Component {
     });
   }
 
+  // Update books collection by shelf
   updateBooks = (book, shelf) => {
     book.shelf = shelf;
+    // Remove book from collection
     if (shelf === 'none') {
       this.setState((currentState) => ({
         shelvedBooks: currentState.shelvedBooks.filter(shelvedBook => shelvedBook.id !== book.id)
       }));
-    } else {
+    }
+    // Add new book or change shelf of exisiting book
+    else {
       this.setState((currentState) => ({
         shelvedBooks: currentState.shelvedBooks.filter(shelvedBook => shelvedBook.id !== book.id).concat([book])
       }));
@@ -36,15 +41,18 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf);
   }
 
+  // Update search query
   updateQuery = (query) => {
     this.setState({ query });
   }
 
+  // Perform search by query
   search = async (query) => {
     const searchedBooks = await BooksAPI.search(query);
     this.setState({ searchedBooks });
   }
 
+  // Clear search results
   clearSearch = () => {
     this.setState({
       searchedBooks: []
