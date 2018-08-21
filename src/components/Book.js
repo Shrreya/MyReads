@@ -33,9 +33,11 @@ class Book extends React.Component {
         <div className="book-top">
           <div
             className="book-cover"
-            style={{ width: 128, height: 193,
-            backgroundImage: bookCoverUrl }}
-          />
+            style={{ backgroundImage: bookCoverUrl }}
+          >
+            {!bookCoverUrl &&
+              <p className="book-cover-placeholder">Cover unavailable</p>}
+          </div>
           <BookShelfChanger
             shelf={bookShelf}
             onChangeShelf={(shelf) => {this.updateBookShelf(book, shelf)}}
