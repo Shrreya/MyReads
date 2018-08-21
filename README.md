@@ -18,3 +18,14 @@ To simplify the development process, Udacity has provided a backend server for s
 
 ## Important
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if searches for Basket Weaving or Bubble Wrap don't come back with any results.
+
+## Preview
+
+1. **Book shelves**
+<img src="https://github.com/Shrreya/MyReads/blob/master/screencasts/Home.gif" />
+
+2. **Change shelf**
+<img src="https://github.com/Shrreya/MyReads/blob/master/screencasts/Shelf.gif" />
+
+3. **Search books**
+<img src="https://github.com/Shrreya/MyReads/blob/master/screencasts/Search.gif" />
