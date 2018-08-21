@@ -188,3 +188,12 @@ body, .app {
   font-size: 10px;
   color: #2e7c31;
 }
+
+/* 404 page */
+.no-match {
+  text-align: center;
+}
+
+.no-match h3 {
+  color: #2e7c31;
+}

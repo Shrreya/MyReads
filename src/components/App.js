@@ -1,9 +1,16 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import ListBooks from './ListBooks';
 import SearchBooks from './SearchBooks';
 import * as BooksAPI from '../utils/BooksAPI';
 import '../styles/App.css';
+
+// Component to be rendered in case of a 404 no match
+const NoMatch = () => (
+  <div className='no-match'>
+    <h3>404! Cannot find this page at the moment.</h3>
+  </div>
+);
 
 class BooksApp extends React.Component {
 
@@ -64,24 +71,27 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-        <Route exact path='/' render={() => (
-          <ListBooks
-            dataAvailable={dataAvailable}
-            shelvedBooks={shelvedBooks}
-            onUpdateListBooks={this.updateBooks}
-          />
-        )} />
-        <Route path='/search' render={() => (
-          <SearchBooks
-            shelvedBooks={shelvedBooks}
-            searchedBooks={searchedBooks}
-            query={query}
-            onUpdateQuery={this.updateQuery}
-            onSearch={this.search}
-            onUpdateListBooks={this.updateBooks}
-            onClear={this.clearSearch}
-          />
-        )} />
+        <Switch>
+          <Route exact path='/' render={() => (
+            <ListBooks
+              dataAvailable={dataAvailable}
+              shelvedBooks={shelvedBooks}
+              onUpdateListBooks={this.updateBooks}
+            />
+          )} />
+          <Route path='/search' render={() => (
+            <SearchBooks
+              shelvedBooks={shelvedBooks}
+              searchedBooks={searchedBooks}
+              query={query}
+              onUpdateQuery={this.updateQuery}
+              onSearch={this.search}
+              onUpdateListBooks={this.updateBooks}
+              onClear={this.clearSearch}
+            />
+          )} />
+          <Route component={NoMatch}/>
+        </Switch>
       </div>
     )
   }
